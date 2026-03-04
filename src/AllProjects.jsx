@@ -33,8 +33,8 @@ export default function AllProjects() {
     { 
       name: 'Web Portfolio', 
       description: language === 'en' 
-        ? 'Photorealistic 3D bottle design with professional texturing and high-quality renders for marketing.'
-        : 'Diseño 3D de botella con modelado fotorrealista, texturizado profesional y renders de alta calidad para marketing.',
+        ? 'Digital portfolio designed to present projects in a clear, modern, and strategic way, with a focus on user experience and visual structure.'
+        : 'Portfolio digital diseñado para presentar proyectos de forma clara, moderna y estratégica, con foco en experiencia de usuario y estructura visual.',
       category: '3D Design',
       link: 'https://portfolio-web-designer-gamma.vercel.app/',
       heroImage: '/projects/portfolio.png',
@@ -63,9 +63,9 @@ export default function AllProjects() {
     { 
       name: 'Billoud', 
       description: language === 'en'
-        ? 'Web application for financial management with real-time analytical dashboards.'
-        : 'Aplicación web para gestión financiera con dashboards analíticos en tiempo real.',
-      category: 'Finance App',
+        ? 'Website developed for a construction company, focused on streamlining inquiries, presenting services clearly, and optimizing contact with potential clients.'
+        : 'Sitio web desarrollado para una constructora, enfocado en agilizar consultas, presentar servicios de forma clara y optimizar el contacto con potenciales clientes.',
+      category: language === 'en' ? 'Design + Web Development' : 'Diseño + Desarrollo Web',
       link: 'https://billoud-constructora.vercel.app/',
       heroImage: '/projects/billoud.png',
       mockupBg: 'linear-gradient(135deg, #38BDF8 0%, #4A9FE5 100%)'
