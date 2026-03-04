@@ -358,7 +358,7 @@ export default function Portfolio() {
                         <span>TikTok</span>
                       </a>
                       <a 
-                        href="https://axus-analytics.vercel.app/" 
+                        href="https://axusanalytics.com/" 
                         target="_blank" 
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
