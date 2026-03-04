@@ -30,8 +30,8 @@ export const translations = {
       },
       krautermeister: {
         name: 'Krautermeister',
-        category: 'Design + E-commerce',
-        description: 'Digital store with elegant visual experience, optimized for catalog and sales.',
+        category: 'Design + Landing Page',
+        description: 'Landing page developed to present a premium liquor, combining elegant aesthetics, visual storytelling, and a conversion-focused approach.',
       },
       krautermeister3d: {
         name: 'Krautermeister 3D',
@@ -85,8 +85,8 @@ export const translations = {
       },
       krautermeister: {
         name: 'Krautermeister',
-        category: 'Diseño + E-commerce',
-        description: 'Tienda digital con experiencia visual elegante, optimizada para catálogo y ventas.',
+        category: 'Diseño + Landing Page',
+        description: 'Landing page desarrollada para presentar un licor premium, combinando estética elegante, narrativa visual y enfoque en conversión.',
       },
       krautermeister3d: {
         name: 'Krautermeister 3D',
