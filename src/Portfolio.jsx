@@ -84,7 +84,7 @@ export default function Portfolio() {
       name: t.projects.office.name,
       category: t.projects.office.category,
       description: t.projects.office.description,
-      link: '#',
+      link: 'https://office-auto-car.vercel.app/',
       mockupBg: 'linear-gradient(145deg, #11233A 0%, #4A9FE5 100%)',
       heroTitle: 'High Impact Corporate Web',
       heroSubtitle: 'Information architecture + strategic design',
@@ -96,7 +96,7 @@ export default function Portfolio() {
       name: t.projects.krautermeister.name,
       category: t.projects.krautermeister.category,
       description: t.projects.krautermeister.description,
-      link: '#',
+      link: 'https://krautermeister-official.vercel.app/',
       mockupBg: 'linear-gradient(145deg, #0B1220 0%, #38BDF8 100%)',
       heroTitle: 'Premium Online Collection',
       heroSubtitle: 'Modern experience for brand products',
@@ -108,7 +108,7 @@ export default function Portfolio() {
       name: t.projects.krautermeister3d.name,
       category: t.projects.krautermeister3d.category,
       description: t.projects.krautermeister3d.description,
-      link: '#',
+      link: null,
       mockupBg: 'linear-gradient(145deg, #10253F 0%, #34B7F4 100%)',
       heroTitle: 'Immersive 3D Showcase',
       heroSubtitle: 'Visual tour of the project',
@@ -398,15 +398,17 @@ export default function Portfolio() {
                       </span>
                       <h3 className="mt-3 sm:mt-4 text-xl sm:text-2xl md:text-4xl font-bold leading-tight text-white">{project.name}</h3>
                       <p className="mt-3 sm:mt-4 text-white/75 text-sm sm:text-base md:text-lg leading-relaxed">{project.description}</p>
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group mt-5 sm:mt-7 inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-xl bg-white/5 border border-white/15 text-axus-light hover:border-axus-accent hover:bg-axus-accent/15 transition-all duration-300 font-semibold text-sm sm:text-base"
-                      >
-                        {t.projects.viewMore}
-                        <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-                      </a>
+                      {project.link && (
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group mt-5 sm:mt-7 inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-xl bg-white/5 border border-white/15 text-axus-light hover:border-axus-accent hover:bg-axus-accent/15 transition-all duration-300 font-semibold text-sm sm:text-base"
+                        >
+                          {t.projects.viewMore}
+                          <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                        </a>
+                      )}
                     </div>
                   </div>
                 </article>

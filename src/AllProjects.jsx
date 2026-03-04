@@ -18,7 +18,7 @@ export default function AllProjects() {
       name: t.projects.office.name, 
       description: t.projects.office.description,
       category: t.projects.office.category,
-      link: '#',
+      link: 'https://office-auto-car.vercel.app/',
       heroImage: '/projects/office.png',
       mockupBg: 'linear-gradient(135deg, #11233A 0%, #4A9FE5 100%)'
     },
@@ -26,7 +26,7 @@ export default function AllProjects() {
       name: t.projects.krautermeister.name, 
       description: t.projects.krautermeister.description,
       category: t.projects.krautermeister.category,
-      link: '#',
+      link: 'https://krautermeister-official.vercel.app/',
       heroImage: '/projects/krautrmeister.png',
       mockupBg: 'linear-gradient(135deg, #0B1220 0%, #38BDF8 100%)'
     },
@@ -36,7 +36,7 @@ export default function AllProjects() {
         ? 'Photorealistic 3D bottle design with professional texturing and high-quality renders for marketing.'
         : 'Diseño 3D de botella con modelado fotorrealista, texturizado profesional y renders de alta calidad para marketing.',
       category: '3D Design',
-      link: '#',
+      link: 'https://portfolio-web-designer-gamma.vercel.app/',
       heroImage: '/projects/portfolio.png',
       mockupBg: 'linear-gradient(135deg, #0B1220 0%, #38BDF8 100%)'
     },
@@ -46,7 +46,7 @@ export default function AllProjects() {
         ? 'Elegant landing page for textile product catalog with attractive visual design and intuitive navigation.'
         : 'Landing page elegante para catálogo de productos textiles con diseño visual atractivo y navegación intuitiva.',
       category: 'Landing Page',
-      link: '#',
+      link: 'https://casi-como-ella.vercel.app/',
       heroImage: '/projects/casicomoella.png',
       mockupBg: 'linear-gradient(135deg, #E0F2FE 0%, #4A9FE5 100%)'
     },
@@ -56,7 +56,7 @@ export default function AllProjects() {
         ? 'High-impact landing page designed to maximize conversion and engagement.'
         : 'Landing page de alto impacto diseñada para maximizar conversión y engagement.',
       category: 'Landing Page',
-      link: '#',
+      link: 'https://rt-detail.vercel.app/',
       heroImage: '/projects/rtdetail.png',
       mockupBg: 'linear-gradient(135deg, #4A9FE5 0%, #E0F2FE 100%)'
     },
@@ -66,7 +66,7 @@ export default function AllProjects() {
         ? 'Web application for financial management with real-time analytical dashboards.'
         : 'Aplicación web para gestión financiera con dashboards analíticos en tiempo real.',
       category: 'Finance App',
-      link: '#',
+      link: 'https://billoud-constructora.vercel.app/',
       heroImage: '/projects/billoud.png',
       mockupBg: 'linear-gradient(135deg, #38BDF8 0%, #4A9FE5 100%)'
     },
