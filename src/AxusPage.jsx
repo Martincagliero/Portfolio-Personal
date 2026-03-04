@@ -215,7 +215,7 @@ export default function AxusPage() {
                   <span>TikTok</span>
                 </a>
                 <a 
-                  href="https://axus-analytics.vercel.app/" 
+                  href="https://axusanalytics.com" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="axus-cta-button group flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg sm:rounded-xl bg-gradient-to-r from-axus-blue to-axus-accent text-white font-bold shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 text-sm w-full sm:w-auto justify-center"
