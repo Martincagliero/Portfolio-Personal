@@ -35,7 +35,7 @@ export default function AllProjects() {
       description: language === 'en' 
         ? 'Digital portfolio designed to present projects in a clear, modern, and strategic way, with a focus on user experience and visual structure.'
         : 'Portfolio digital diseñado para presentar proyectos de forma clara, moderna y estratégica, con foco en experiencia de usuario y estructura visual.',
-      category: '3D Design',
+      category: 'Portfolio Page',
       link: 'https://portfolio-web-designer-gamma.vercel.app/',
       heroImage: '/projects/portfolio.png',
       mockupBg: 'linear-gradient(135deg, #0B1220 0%, #38BDF8 100%)'
