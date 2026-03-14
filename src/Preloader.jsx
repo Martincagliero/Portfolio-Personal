@@ -5,19 +5,29 @@ import { useLanguage } from './LanguageContext.jsx';
 const PRELOADER_COPY = {
   en: {
     eyebrow: 'MARTIN CAGLIERO',
+    edition: 'Portfolio Sequence 2026',
+    label: 'Engineered presence',
+    title: ['Digital', 'systems', 'with aura'],
+    note: 'A short brand-grade intro before the work takes over.',
     stages: {
-      boot: 'loading',
-      sync: 'syncing',
-      ready: 'ready',
+      boot: 'loading surfaces',
+      sync: 'shaping motion',
+      ready: 'launching portfolio',
     },
+    tags: ['frontend', 'ux', 'identity'],
   },
   es: {
     eyebrow: 'MARTIN CAGLIERO',
+    edition: 'Portfolio Sequence 2026',
+    label: 'Presencia diseñada',
+    title: ['Sistemas', 'digitales', 'con aura'],
+    note: 'Una intro breve, más cercana a una pieza de marca que a un loader común.',
     stages: {
-      boot: 'cargando',
-      sync: 'sincronizando',
-      ready: 'listo',
+      boot: 'cargando superficies',
+      sync: 'moldeando motion',
+      ready: 'abriendo portfolio',
     },
+    tags: ['frontend', 'ux', 'identidad'],
   },
 };
 
@@ -73,42 +83,40 @@ export default function Preloader({ onComplete }) {
     }
 
     const ctx = gsap.context(() => {
-      const timeline = gsap.timeline();
+      const timeline = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
       timeline
         .fromTo(
-          '.preloader-reveal',
-          { y: 24, opacity: 0 },
+          '.preloader-word-line',
+          { yPercent: 135, opacity: 0 },
           {
-            y: 0,
+            yPercent: 0,
             opacity: 1,
-            duration: 0.75,
-            ease: 'power3.out',
-            stagger: 0.08,
+            duration: 0.85,
+            stagger: 0.07,
           }
         )
         .fromTo(
-          '.preloader-visual',
-          { scale: 0.88, rotate: -10, opacity: 0 },
+          '.preloader-fade',
+          { y: 22, opacity: 0 },
           {
-            scale: 1,
-            rotate: 0,
+            y: 0,
             opacity: 1,
-            duration: 0.95,
-            ease: 'power3.out',
+            duration: 0.7,
+            stagger: 0.06,
           },
           0.08
         )
         .fromTo(
-          '.preloader-meta',
-          { y: 16, opacity: 0 },
+          '.preloader-monolith',
+          { scale: 0.88, rotate: -9, opacity: 0 },
           {
-            y: 0,
+            scale: 1,
+            rotate: 0,
             opacity: 1,
-            duration: 0.55,
-            ease: 'power2.out',
+            duration: 1,
           },
-          0.2
+          0.16
         );
     }, overlayRef);
 
@@ -122,7 +130,7 @@ export default function Preloader({ onComplete }) {
 
     const finishLoading = () => {
       const elapsed = performance.now() - startTime;
-      const remaining = Math.max(0, 1200 - elapsed);
+      const remaining = Math.max(0, 1650 - elapsed);
 
       settleTimer = window.setTimeout(() => {
         setProgress(100);
@@ -135,10 +143,10 @@ export default function Preloader({ onComplete }) {
           return current;
         }
 
-        const nextValue = current + Math.floor(Math.random() * 9) + 4;
+        const nextValue = current + Math.floor(Math.random() * 7) + 5;
         return Math.min(nextValue, 94);
       });
-    }, 110);
+    }, 120);
 
     if (document.readyState === 'complete') {
       finishLoading();
@@ -174,52 +182,54 @@ export default function Preloader({ onComplete }) {
     });
 
     timeline
-      .to('.preloader-progress-fill', { opacity: 0.6, duration: 0.18 })
+      .to('.preloader-progress-fill', { opacity: 0.7, duration: 0.18 })
       .to(
-        '.preloader-reveal',
+        '.preloader-word-line',
         {
-          y: -22,
+          yPercent: -120,
           opacity: 0,
           duration: 0.42,
-          stagger: 0.04,
+          stagger: 0.05,
         },
         0
       )
       .to(
-        '.preloader-visual',
+        '.preloader-fade',
         {
-          scale: 1.08,
-          rotate: 8,
+          y: -18,
           opacity: 0,
-          duration: 0.4,
+          duration: 0.32,
+          stagger: 0.03,
         },
         0.05
       )
       .to(
-        '.preloader-panel',
+        '.preloader-monolith',
         {
-          scale: 0.97,
+          scale: 1.12,
+          rotate: 8,
           opacity: 0,
-          duration: 0.44,
+          duration: 0.42,
         },
-        0.14
+        0.02
       )
       .to(
-        '.preloader-overlay-line',
+        '.preloader-shell',
         {
-          scaleX: 0,
-          transformOrigin: 'left center',
-          duration: 0.32,
+          clipPath: 'inset(18% 24% 22% 24% round 42px)',
+          scale: 0.9,
+          opacity: 0,
+          duration: 0.72,
         },
-        0.18
+        0.12
       )
       .to(
         overlayRef.current,
         {
           opacity: 0,
-          duration: 0.22,
+          duration: 0.2,
         },
-        0.34
+        0.56
       );
 
     return () => timeline.kill();
@@ -227,40 +237,74 @@ export default function Preloader({ onComplete }) {
 
   return (
     <div ref={overlayRef} className="site-preloader" role="status" aria-live="polite" aria-label={stage}>
-      <div className="preloader-overlay-line" />
+      <div className="preloader-ambient-orb preloader-ambient-orb-a" />
+      <div className="preloader-ambient-orb preloader-ambient-orb-b" />
       <div className="preloader-grid" />
-      <div className="preloader-glow preloader-glow-left" />
-      <div className="preloader-glow preloader-glow-right" />
+      <div className="preloader-noise" />
+      <div className="preloader-overlay-line" />
 
-      <div className="preloader-shell preloader-panel">
-        <div className="preloader-topbar preloader-reveal">
+      <div className="preloader-shell">
+        <div className="preloader-corner preloader-corner-tl" />
+        <div className="preloader-corner preloader-corner-tr" />
+        <div className="preloader-corner preloader-corner-bl" />
+        <div className="preloader-corner preloader-corner-br" />
+
+        <div className="preloader-topbar preloader-fade">
           <span>{copy.eyebrow}</span>
+          <span>{copy.edition}</span>
         </div>
 
         <div className="preloader-main">
-          <div className="preloader-visual" aria-hidden="true">
-            <div className="preloader-visual-halo" />
-            <div className="preloader-visual-card">
-              <div className="preloader-visual-lattice" />
-              <div className="preloader-visual-ribbon preloader-visual-ribbon-a" />
-              <div className="preloader-visual-ribbon preloader-visual-ribbon-b" />
-              <div className="preloader-visual-axis" />
-              <div className="preloader-visual-core">
-                <span>MC</span>
+          <div className="preloader-copy">
+            <p className="preloader-label preloader-fade">{copy.label}</p>
+
+            <h1 className="preloader-title" aria-label={copy.title.join(' ')}>
+              {copy.title.map((line) => (
+                <span key={line} className="preloader-word-mask">
+                  <span className="preloader-word-line">{line}</span>
+                </span>
+              ))}
+            </h1>
+
+            <p className="preloader-note preloader-fade">{copy.note}</p>
+
+            <div className="preloader-tags preloader-fade" aria-hidden="true">
+              {copy.tags.map((tag) => (
+                <span key={tag}>{tag}</span>
+              ))}
+            </div>
+          </div>
+
+          <div className="preloader-monolith" aria-hidden="true">
+            <div className="preloader-monolith-halo" />
+            <div className="preloader-monolith-orbit preloader-monolith-orbit-a" />
+            <div className="preloader-monolith-orbit preloader-monolith-orbit-b" />
+
+            <div className="preloader-monolith-stack">
+              <div className="preloader-monolith-panel preloader-monolith-panel-back" />
+              <div className="preloader-monolith-panel preloader-monolith-panel-mid" />
+              <div className="preloader-monolith-panel preloader-monolith-panel-front">
+                <div className="preloader-monolith-grid" />
+                <div className="preloader-monolith-ribbon preloader-monolith-ribbon-a" />
+                <div className="preloader-monolith-ribbon preloader-monolith-ribbon-b" />
+                <div className="preloader-monolith-core">
+                  <span>MC</span>
+                  <small>{String(progress).padStart(3, '0')}</small>
+                </div>
+                <div className="preloader-monolith-node preloader-monolith-node-a" />
+                <div className="preloader-monolith-node preloader-monolith-node-b" />
+                <div className="preloader-monolith-axis" />
               </div>
-              <div className="preloader-visual-node preloader-visual-node-a" />
-              <div className="preloader-visual-node preloader-visual-node-b" />
-              <div className="preloader-visual-node preloader-visual-node-c" />
             </div>
           </div>
         </div>
 
-        <div className="preloader-meta preloader-reveal">
+        <div className="preloader-meta preloader-fade">
           <span>{stage}</span>
           <span>{String(progress).padStart(3, '0')}%</span>
         </div>
 
-        <div className="preloader-dashboard preloader-reveal">
+        <div className="preloader-dashboard preloader-fade">
           <div className="preloader-progress-track" aria-hidden="true">
             <div
               className="preloader-progress-fill"

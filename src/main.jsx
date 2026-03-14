@@ -15,13 +15,15 @@ function AppShell() {
     <>
       {showPreloader && <Preloader onComplete={() => setShowPreloader(false)} />}
 
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Portfolio />} />
-          <Route path="/projects" element={<AllProjects />} />
-          <Route path="/axus" element={<AxusPage />} />
-        </Routes>
-      </BrowserRouter>
+      <div className={`app-shell ${showPreloader ? 'app-shell-loading' : 'app-shell-ready'}`}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Portfolio />} />
+            <Route path="/projects" element={<AllProjects />} />
+            <Route path="/axus" element={<AxusPage />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
     </>
   )
 }
