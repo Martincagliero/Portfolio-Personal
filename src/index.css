@@ -157,84 +157,114 @@ html {
   width: min(60vw, 360px);
   aspect-ratio: 1;
   margin: 0 auto;
-  border-radius: 34px;
+  display: grid;
+  place-items: center;
+}
+
+.preloader-visual-halo,
+.preloader-visual-card,
+.preloader-visual-lattice,
+.preloader-visual-core,
+.preloader-visual-axis,
+.preloader-visual-ribbon,
+.preloader-visual-node {
+  position: absolute;
+}
+
+.preloader-visual-halo {
+  inset: 10%;
+  border-radius: 34%;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(111, 217, 255, 0.16) 0%, rgba(111, 217, 255, 0.06) 26%, rgba(111, 217, 255, 0) 60%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 68%);
+  filter: blur(10px);
+  animation: preloaderHalo 4s ease-in-out infinite;
+}
+
+.preloader-visual-card {
+  position: relative;
+  width: 64%;
+  height: 64%;
+  border-radius: 32px;
   overflow: hidden;
   background:
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.045) 0%, rgba(255, 255, 255, 0.01) 62%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.008) 100%);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
-}
-
-.preloader-visual-frame,
-.preloader-visual-core,
-.preloader-visual-beam,
-.preloader-visual-orbit {
-  position: absolute;
-  border-radius: 28px;
-}
-
-.preloader-visual-frame {
-  border: 1px solid rgba(151, 219, 255, 0.16);
-}
-
-.preloader-visual-frame-outer {
-  inset: 10%;
-}
-
-.preloader-visual-frame-mid {
-  inset: 22%;
-  border-color: rgba(151, 219, 255, 0.22);
-}
-
-.preloader-visual-frame-inner {
-  inset: 34%;
-  border-color: rgba(255, 255, 255, 0.14);
-}
-
-.preloader-visual-slice {
-  position: absolute;
-  left: 16%;
-  right: 16%;
-  height: 18%;
-  border-radius: 999px;
+    linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 28%, rgba(111, 217, 255, 0.05) 100%),
+    rgba(8, 16, 28, 0.72);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.015) 0%, rgba(143, 216, 255, 0.08) 50%, rgba(255, 255, 255, 0.015) 100%);
-  backdrop-filter: blur(10px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 24px 42px rgba(0, 0, 0, 0.28);
+  transform: rotate(-8deg);
+  animation: preloaderCardFloat 4.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
-.preloader-visual-slice-a {
+.preloader-visual-lattice {
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9), transparent 90%);
+  opacity: 0.45;
+}
+
+.preloader-visual-ribbon {
+  left: -14%;
+  right: -14%;
+  height: 22%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.03) 0%, rgba(129, 223, 255, 0.42) 48%, rgba(255, 255, 255, 0.03) 100%);
+  mix-blend-mode: screen;
+  filter: blur(0.4px);
+}
+
+.preloader-visual-ribbon-a {
   top: 24%;
-  animation: preloaderSliceA 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  transform: rotate(18deg) translateX(-8%);
+  animation: preloaderRibbonA 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
-.preloader-visual-slice-b {
-  bottom: 24%;
-  animation: preloaderSliceB 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+.preloader-visual-ribbon-b {
+  bottom: 22%;
+  transform: rotate(-16deg) translateX(8%);
+  animation: preloaderRibbonB 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
-.preloader-visual-orbit {
-  inset: 18%;
-  border: 1px solid rgba(143, 216, 255, 0.12);
-}
-
-.preloader-visual-orbit-a {
-  animation: preloaderSpin 8s linear infinite;
-}
-
-.preloader-visual-orbit-b {
-  inset: 26%;
-  border-color: rgba(255, 255, 255, 0.1);
-  animation: preloaderSpinReverse 10s linear infinite;
-}
-
-.preloader-visual-beam {
-  top: 14%;
-  bottom: 14%;
+.preloader-visual-axis {
+  top: 10%;
+  bottom: 10%;
   left: 50%;
   width: 1px;
-  background: linear-gradient(180deg, transparent 0%, rgba(143, 216, 255, 0.7) 24%, rgba(143, 216, 255, 0.16) 68%, transparent 100%);
-  box-shadow: 0 0 24px rgba(143, 216, 255, 0.18);
-  animation: preloaderBeam 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  background: linear-gradient(180deg, transparent 0%, rgba(221, 246, 255, 0.85) 50%, transparent 100%);
+  box-shadow: 0 0 24px rgba(121, 218, 255, 0.2);
+}
+
+.preloader-visual-node {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #d8f9ff;
+  box-shadow: 0 0 18px rgba(129, 223, 255, 0.44);
+}
+
+.preloader-visual-node-a {
+  top: 18%;
+  left: 18%;
+  animation: preloaderNodePulse 2.4s ease-in-out infinite;
+}
+
+.preloader-visual-node-b {
+  right: 16%;
+  bottom: 18%;
+  animation: preloaderNodePulse 2.4s ease-in-out infinite 0.8s;
+}
+
+.preloader-visual-node-c {
+  top: 48%;
+  right: 22%;
+  width: 6px;
+  height: 6px;
+  animation: preloaderNodePulse 2.4s ease-in-out infinite 1.3s;
 }
 
 .preloader-visual-core {
@@ -305,41 +335,65 @@ html {
   }
 }
 
-@keyframes preloaderSliceA {
+@keyframes preloaderHalo {
   0%,
   100% {
-    transform: translateX(-12%) scaleX(0.88);
-    opacity: 0.45;
+    transform: scale(0.94);
+    opacity: 0.55;
   }
 
   50% {
-    transform: translateX(12%) scaleX(1.04);
+    transform: scale(1.04);
     opacity: 0.92;
   }
 }
 
-@keyframes preloaderSliceB {
+@keyframes preloaderCardFloat {
   0%,
   100% {
-    transform: translateX(12%) scaleX(1.04);
-    opacity: 0.92;
+    transform: rotate(-8deg) translateY(0);
   }
 
   50% {
-    transform: translateX(-12%) scaleX(0.88);
-    opacity: 0.45;
+    transform: rotate(-2deg) translateY(-8px);
   }
 }
 
-@keyframes preloaderBeam {
+@keyframes preloaderRibbonA {
   0%,
   100% {
-    transform: translateX(-40px);
+    transform: rotate(18deg) translateX(-12%) scaleX(0.92);
+    opacity: 0.34;
+  }
+
+  50% {
+    transform: rotate(10deg) translateX(10%) scaleX(1.06);
+    opacity: 0.98;
+  }
+}
+
+@keyframes preloaderRibbonB {
+  0%,
+  100% {
+    transform: rotate(-16deg) translateX(10%) scaleX(1.06);
+    opacity: 0.9;
+  }
+
+  50% {
+    transform: rotate(-8deg) translateX(-12%) scaleX(0.9);
     opacity: 0.3;
   }
+}
+
+@keyframes preloaderNodePulse {
+  0%,
+  100% {
+    transform: scale(0.8);
+    opacity: 0.45;
+  }
 
   50% {
-    transform: translateX(40px);
+    transform: scale(1.2);
     opacity: 1;
   }
 }
@@ -383,11 +437,13 @@ html {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .preloader-visual-beam,
-  .preloader-visual-slice-a,
-  .preloader-visual-slice-b,
-  .preloader-visual-orbit-a,
-  .preloader-visual-orbit-b,
+  .preloader-visual-halo,
+  .preloader-visual-card,
+  .preloader-visual-ribbon-a,
+  .preloader-visual-ribbon-b,
+  .preloader-visual-node-a,
+  .preloader-visual-node-b,
+  .preloader-visual-node-c,
   .preloader-progress-track::after,
   .preloader-overlay-line {
     animation: none;

@@ -239,16 +239,18 @@ export default function Preloader({ onComplete }) {
 
         <div className="preloader-main">
           <div className="preloader-visual" aria-hidden="true">
-            <div className="preloader-visual-frame preloader-visual-frame-outer" />
-            <div className="preloader-visual-frame preloader-visual-frame-mid" />
-            <div className="preloader-visual-frame preloader-visual-frame-inner" />
-            <div className="preloader-visual-slice preloader-visual-slice-a" />
-            <div className="preloader-visual-slice preloader-visual-slice-b" />
-            <div className="preloader-visual-orbit preloader-visual-orbit-a" />
-            <div className="preloader-visual-orbit preloader-visual-orbit-b" />
-            <div className="preloader-visual-beam" />
-            <div className="preloader-visual-core">
-              <span>MC</span>
+            <div className="preloader-visual-halo" />
+            <div className="preloader-visual-card">
+              <div className="preloader-visual-lattice" />
+              <div className="preloader-visual-ribbon preloader-visual-ribbon-a" />
+              <div className="preloader-visual-ribbon preloader-visual-ribbon-b" />
+              <div className="preloader-visual-axis" />
+              <div className="preloader-visual-core">
+                <span>MC</span>
+              </div>
+              <div className="preloader-visual-node preloader-visual-node-a" />
+              <div className="preloader-visual-node preloader-visual-node-b" />
+              <div className="preloader-visual-node preloader-visual-node-c" />
             </div>
           </div>
         </div>
