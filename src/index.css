@@ -30,9 +30,9 @@ html {
   justify-content: center;
   overflow: hidden;
   background:
-    radial-gradient(circle at 24% 22%, rgba(85, 196, 255, 0.1) 0%, rgba(85, 196, 255, 0) 28%),
-    radial-gradient(circle at 76% 30%, rgba(142, 255, 232, 0.08) 0%, rgba(142, 255, 232, 0) 24%),
-    linear-gradient(180deg, #040813 0%, #09101d 50%, #050913 100%);
+    radial-gradient(circle at 24% 18%, rgba(85, 196, 255, 0.08) 0%, rgba(85, 196, 255, 0) 26%),
+    radial-gradient(circle at 78% 68%, rgba(142, 255, 232, 0.06) 0%, rgba(142, 255, 232, 0) 20%),
+    linear-gradient(180deg, #040813 0%, #080d18 50%, #040813 100%);
   isolation: isolate;
 }
 
@@ -42,8 +42,8 @@ html {
   left: 0;
   width: 100%;
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(143, 216, 255, 0.3) 20%, rgba(227, 244, 255, 0.7) 50%, rgba(143, 216, 255, 0.3) 80%, transparent 100%);
-  opacity: 0.55;
+  background: linear-gradient(90deg, transparent 0%, rgba(143, 216, 255, 0.2) 20%, rgba(227, 244, 255, 0.55) 50%, rgba(143, 216, 255, 0.2) 80%, transparent 100%);
+  opacity: 0.42;
 }
 
 .preloader-grid,
@@ -55,11 +55,11 @@ html {
 
 .preloader-grid {
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 72px 72px;
+    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 84px 84px;
   mask-image: radial-gradient(circle at center, black 14%, transparent 78%);
-  opacity: 0.42;
+  opacity: 0.34;
 }
 
 .preloader-glow-left {
@@ -72,15 +72,15 @@ html {
 
 .preloader-shell {
   position: relative;
-  width: min(980px, calc(100vw - 2rem));
-  padding: 1.8rem;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 30px;
-  background: linear-gradient(180deg, rgba(5, 11, 21, 0.86) 0%, rgba(7, 14, 26, 0.72) 100%);
+  width: min(720px, calc(100vw - 2rem));
+  padding: 1.25rem 1.25rem 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 36px;
+  background: linear-gradient(180deg, rgba(6, 12, 22, 0.74) 0%, rgba(7, 13, 25, 0.56) 100%);
   box-shadow:
-    0 28px 64px rgba(0, 0, 0, 0.36),
+    0 24px 60px rgba(0, 0, 0, 0.34),
     inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(22px);
 }
 
 .preloader-panel::before,
@@ -109,56 +109,29 @@ html {
 
 .preloader-topbar {
   display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 1.4rem;
-  color: rgba(210, 232, 255, 0.62);
-  font-size: 0.66rem;
-  letter-spacing: 0.3em;
+  justify-content: center;
+  margin-bottom: 0.85rem;
+  color: rgba(210, 232, 255, 0.56);
+  font-size: 0.62rem;
+  letter-spacing: 0.42em;
   text-transform: uppercase;
 }
 
 .preloader-main {
-  display: grid;
-  grid-template-columns: minmax(180px, 0.7fr) minmax(280px, 1fr);
-  gap: 2.4rem;
-  align-items: center;
-}
-
-.preloader-copy {
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  gap: 1rem;
-}
-
-.preloader-signature {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.7rem;
-  color: rgba(232, 240, 255, 0.86);
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(1.25rem, 3vw, 1.8rem);
-  letter-spacing: -0.04em;
-  text-transform: lowercase;
-}
-
-.preloader-signature-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #88dbff 0%, #e4fbff 100%);
-  box-shadow: 0 0 20px rgba(136, 219, 255, 0.45);
 }
 
 .preloader-meta {
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 0.9rem;
-  color: rgba(223, 236, 255, 0.52);
+  margin-top: 0.9rem;
+  color: rgba(223, 236, 255, 0.48);
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.72rem;
-  letter-spacing: 0.28em;
+  font-size: 0.62rem;
+  letter-spacing: 0.34em;
   text-transform: uppercase;
 }
 
@@ -181,12 +154,14 @@ html {
 
 .preloader-visual {
   position: relative;
-  width: min(34vw, 420px);
+  width: min(60vw, 360px);
   aspect-ratio: 1;
-  margin-left: auto;
+  margin: 0 auto;
   border-radius: 34px;
   overflow: hidden;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035) 0%, rgba(255, 255, 255, 0.01) 100%);
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.045) 0%, rgba(255, 255, 255, 0.01) 62%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.008) 100%);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 
@@ -203,11 +178,11 @@ html {
 }
 
 .preloader-visual-frame-outer {
-  inset: 8%;
+  inset: 10%;
 }
 
 .preloader-visual-frame-mid {
-  inset: 21%;
+  inset: 22%;
   border-color: rgba(151, 219, 255, 0.22);
 }
 
@@ -216,33 +191,54 @@ html {
   border-color: rgba(255, 255, 255, 0.14);
 }
 
+.preloader-visual-slice {
+  position: absolute;
+  left: 16%;
+  right: 16%;
+  height: 18%;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.015) 0%, rgba(143, 216, 255, 0.08) 50%, rgba(255, 255, 255, 0.015) 100%);
+  backdrop-filter: blur(10px);
+}
+
+.preloader-visual-slice-a {
+  top: 24%;
+  animation: preloaderSliceA 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.preloader-visual-slice-b {
+  bottom: 24%;
+  animation: preloaderSliceB 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
 .preloader-visual-orbit {
   inset: 18%;
   border: 1px solid rgba(143, 216, 255, 0.12);
 }
 
 .preloader-visual-orbit-a {
-  animation: preloaderSpin 7.5s linear infinite;
+  animation: preloaderSpin 8s linear infinite;
 }
 
 .preloader-visual-orbit-b {
   inset: 26%;
   border-color: rgba(255, 255, 255, 0.1);
-  animation: preloaderSpinReverse 9s linear infinite;
+  animation: preloaderSpinReverse 10s linear infinite;
 }
 
 .preloader-visual-beam {
-  top: 8%;
-  bottom: 8%;
+  top: 14%;
+  bottom: 14%;
   left: 50%;
   width: 1px;
-  background: linear-gradient(180deg, transparent 0%, rgba(143, 216, 255, 0.8) 30%, rgba(143, 216, 255, 0.14) 65%, transparent 100%);
-  box-shadow: 0 0 28px rgba(143, 216, 255, 0.2);
-  animation: preloaderBeam 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  background: linear-gradient(180deg, transparent 0%, rgba(143, 216, 255, 0.7) 24%, rgba(143, 216, 255, 0.16) 68%, transparent 100%);
+  box-shadow: 0 0 24px rgba(143, 216, 255, 0.18);
+  animation: preloaderBeam 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 .preloader-visual-core {
-  inset: 38%;
+  inset: 39%;
   display: grid;
   place-items: center;
   background:
@@ -262,13 +258,13 @@ html {
 }
 
 .preloader-dashboard {
-  margin-top: 1.4rem;
+  margin-top: 0.9rem;
 }
 
 .preloader-progress-track {
   position: relative;
   overflow: hidden;
-  height: 4px;
+  height: 3px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.07);
 }
@@ -286,7 +282,7 @@ html {
   inset: 0;
   transform-origin: left center;
   background: linear-gradient(90deg, #67d3ff 0%, #d4fcff 100%);
-  box-shadow: 0 0 20px rgba(103, 211, 255, 0.28);
+  box-shadow: 0 0 16px rgba(103, 211, 255, 0.22);
 }
 
 @keyframes preloaderSpin {
@@ -306,6 +302,32 @@ html {
 
   to {
     transform: rotate(0deg);
+  }
+}
+
+@keyframes preloaderSliceA {
+  0%,
+  100% {
+    transform: translateX(-12%) scaleX(0.88);
+    opacity: 0.45;
+  }
+
+  50% {
+    transform: translateX(12%) scaleX(1.04);
+    opacity: 0.92;
+  }
+}
+
+@keyframes preloaderSliceB {
+  0%,
+  100% {
+    transform: translateX(12%) scaleX(1.04);
+    opacity: 0.92;
+  }
+
+  50% {
+    transform: translateX(-12%) scaleX(0.88);
+    opacity: 0.45;
   }
 }
 
@@ -334,43 +356,24 @@ html {
 
 @media (max-width: 900px) {
   .preloader-shell {
-    width: min(100vw - 1.25rem, 1080px);
-    padding: 1.2rem 1.1rem;
-    border-radius: 24px;
+    width: min(100vw - 1.25rem, 720px);
+    padding: 1rem 1rem 0.95rem;
+    border-radius: 28px;
   }
 
   .preloader-topbar {
-    margin-bottom: 1.4rem;
+    margin-bottom: 0.8rem;
     font-size: 0.62rem;
     letter-spacing: 0.24em;
   }
 
-  .preloader-main {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .preloader-copy {
-    align-items: center;
-    text-align: center;
-  }
-
   .preloader-visual {
-    width: min(72vw, 300px);
+    width: min(72vw, 320px);
     margin: 0 auto;
   }
 }
 
 @media (max-width: 560px) {
-  .preloader-title {
-    font-size: clamp(2.65rem, 16vw, 4rem);
-  }
-
-  .preloader-description {
-    font-size: 0.92rem;
-    line-height: 1.6;
-  }
-
   .preloader-meta {
     flex-wrap: wrap;
     justify-content: center;
@@ -381,6 +384,8 @@ html {
 
 @media (prefers-reduced-motion: reduce) {
   .preloader-visual-beam,
+  .preloader-visual-slice-a,
+  .preloader-visual-slice-b,
   .preloader-visual-orbit-a,
   .preloader-visual-orbit-b,
   .preloader-progress-track::after,

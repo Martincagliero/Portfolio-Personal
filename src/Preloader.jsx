@@ -78,36 +78,37 @@ export default function Preloader({ onComplete }) {
       timeline
         .fromTo(
           '.preloader-reveal',
-          { y: 32, opacity: 0 },
+          { y: 24, opacity: 0 },
           {
             y: 0,
             opacity: 1,
-            duration: 0.9,
+            duration: 0.75,
             ease: 'power3.out',
-            stagger: 0.1,
+            stagger: 0.08,
           }
         )
         .fromTo(
           '.preloader-visual',
-          { scale: 0.92, opacity: 0 },
+          { scale: 0.88, rotate: -10, opacity: 0 },
           {
             scale: 1,
+            rotate: 0,
             opacity: 1,
-            duration: 1,
+            duration: 0.95,
             ease: 'power3.out',
           },
-          0.12
+          0.08
         )
         .fromTo(
           '.preloader-meta',
-          { y: 18, opacity: 0 },
+          { y: 16, opacity: 0 },
           {
             y: 0,
             opacity: 1,
-            duration: 0.65,
+            duration: 0.55,
             ease: 'power2.out',
           },
-          0.3
+          0.2
         );
     }, overlayRef);
 
@@ -121,7 +122,7 @@ export default function Preloader({ onComplete }) {
 
     const finishLoading = () => {
       const elapsed = performance.now() - startTime;
-      const remaining = Math.max(0, 1450 - elapsed);
+      const remaining = Math.max(0, 1200 - elapsed);
 
       settleTimer = window.setTimeout(() => {
         setProgress(100);
@@ -187,38 +188,38 @@ export default function Preloader({ onComplete }) {
       .to(
         '.preloader-visual',
         {
-          scale: 0.96,
+          scale: 1.08,
+          rotate: 8,
           opacity: 0,
-          duration: 0.42,
+          duration: 0.4,
         },
         0.05
       )
       .to(
         '.preloader-panel',
         {
-          y: -20,
-          scale: 0.985,
+          scale: 0.97,
           opacity: 0,
-          duration: 0.58,
+          duration: 0.44,
         },
-        0.16
+        0.14
       )
       .to(
         '.preloader-overlay-line',
         {
           scaleX: 0,
           transformOrigin: 'left center',
-          duration: 0.48,
+          duration: 0.32,
         },
-        0.22
+        0.18
       )
       .to(
         overlayRef.current,
         {
           opacity: 0,
-          duration: 0.28,
+          duration: 0.22,
         },
-        0.48
+        0.34
       );
 
     return () => timeline.kill();
@@ -234,26 +235,15 @@ export default function Preloader({ onComplete }) {
       <div className="preloader-shell preloader-panel">
         <div className="preloader-topbar preloader-reveal">
           <span>{copy.eyebrow}</span>
-          <span>{String(progress).padStart(3, '0')}</span>
         </div>
 
         <div className="preloader-main">
-          <div className="preloader-copy preloader-reveal">
-            <div className="preloader-signature">
-              <span>portfolio</span>
-              <span className="preloader-signature-dot" />
-            </div>
-
-            <div className="preloader-meta">
-              <span>{stage}</span>
-              <span>{String(progress).padStart(3, '0')}%</span>
-            </div>
-          </div>
-
           <div className="preloader-visual" aria-hidden="true">
             <div className="preloader-visual-frame preloader-visual-frame-outer" />
             <div className="preloader-visual-frame preloader-visual-frame-mid" />
             <div className="preloader-visual-frame preloader-visual-frame-inner" />
+            <div className="preloader-visual-slice preloader-visual-slice-a" />
+            <div className="preloader-visual-slice preloader-visual-slice-b" />
             <div className="preloader-visual-orbit preloader-visual-orbit-a" />
             <div className="preloader-visual-orbit preloader-visual-orbit-b" />
             <div className="preloader-visual-beam" />
@@ -261,6 +251,11 @@ export default function Preloader({ onComplete }) {
               <span>MC</span>
             </div>
           </div>
+        </div>
+
+        <div className="preloader-meta preloader-reveal">
+          <span>{stage}</span>
+          <span>{String(progress).padStart(3, '0')}%</span>
         </div>
 
         <div className="preloader-dashboard preloader-reveal">
