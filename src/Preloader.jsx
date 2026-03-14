@@ -5,39 +5,29 @@ import { useLanguage } from './LanguageContext.jsx';
 const PRELOADER_COPY = {
   en: {
     eyebrow: 'MARTIN CAGLIERO',
-    label: 'Portfolio system',
-    titleTop: 'Crafting',
-    titleBottom: 'digital presence',
-    description: 'Loading a portfolio designed to feel sharp, premium and deliberate from the first frame.',
+    label: 'Curated portfolio',
+    titleTop: 'Less noise',
+    titleBottom: 'more signal',
+    description: 'A concise transition that sets tone, rhythm and precision before the work appears.',
     stages: {
-      boot: 'Mapping interface layers',
-      sync: 'Calibrating motion and detail',
-      ready: 'Experience ready',
+      boot: 'Aligning structure',
+      sync: 'Refining detail',
+      ready: 'Opening portfolio',
     },
-    metrics: [
-      { value: 'UX', label: 'Intentional flows' },
-      { value: 'DEV', label: 'Solid frontend' },
-      { value: 'MOTION', label: 'Visual rhythm' },
-    ],
-    rail: ['strategy', 'code', 'identity', 'motion', 'clarity'],
+    markers: ['strategy', 'design', 'systems'],
   },
   es: {
     eyebrow: 'MARTIN CAGLIERO',
-    label: 'Portfolio system',
-    titleTop: 'Construyendo',
-    titleBottom: 'presencia digital',
-    description: 'Cargando un portfolio pensado para sentirse preciso, premium e intencional desde el primer frame.',
+    label: 'Portfolio curado',
+    titleTop: 'Menos ruido',
+    titleBottom: 'más señal',
+    description: 'Una transición breve que marca tono, ritmo y precisión antes de mostrar el trabajo.',
     stages: {
-      boot: 'Mapeando capas de interfaz',
-      sync: 'Calibrando motion y detalle',
-      ready: 'Experiencia lista',
+      boot: 'Alineando estructura',
+      sync: 'Refinando detalle',
+      ready: 'Abriendo portfolio',
     },
-    metrics: [
-      { value: 'UX', label: 'Flujos intencionales' },
-      { value: 'DEV', label: 'Frontend sólido' },
-      { value: 'MOTION', label: 'Ritmo visual' },
-    ],
-    rail: ['estrategia', 'codigo', 'identidad', 'motion', 'claridad'],
+    markers: ['estrategia', 'diseno', 'sistemas'],
   },
 };
 
@@ -108,24 +98,23 @@ export default function Preloader({ onComplete }) {
           }
         )
         .fromTo(
-          '.preloader-orbit',
-          { scale: 0.82, rotate: -18, opacity: 0 },
+          '.preloader-visual',
+          { scale: 0.92, opacity: 0 },
           {
             scale: 1,
-            rotate: 0,
             opacity: 1,
-            duration: 1.1,
+            duration: 1,
             ease: 'power3.out',
           },
           0.12
         )
         .fromTo(
-          '.preloader-rail-track',
+          '.preloader-status-row',
           { y: 18, opacity: 0 },
           {
             y: 0,
             opacity: 1,
-            duration: 0.75,
+            duration: 0.65,
             ease: 'power2.out',
           },
           0.3
@@ -142,7 +131,7 @@ export default function Preloader({ onComplete }) {
 
     const finishLoading = () => {
       const elapsed = performance.now() - startTime;
-      const remaining = Math.max(0, 1900 - elapsed);
+      const remaining = Math.max(0, 1450 - elapsed);
 
       settleTimer = window.setTimeout(() => {
         setProgress(100);
@@ -206,37 +195,40 @@ export default function Preloader({ onComplete }) {
         0
       )
       .to(
-        '.preloader-orbit',
+        '.preloader-visual',
         {
-          scale: 0.88,
+          scale: 0.96,
           opacity: 0,
-          duration: 0.48,
+          duration: 0.42,
         },
         0.05
       )
       .to(
-        '.preloader-shutter-top',
+        '.preloader-panel',
         {
-          yPercent: -100,
-          duration: 0.92,
+          y: -20,
+          scale: 0.985,
+          opacity: 0,
+          duration: 0.58,
         },
-        0.15
+        0.16
       )
       .to(
-        '.preloader-shutter-bottom',
+        '.preloader-overlay-line',
         {
-          yPercent: 100,
-          duration: 0.92,
+          scaleX: 0,
+          transformOrigin: 'left center',
+          duration: 0.48,
         },
-        0.15
+        0.22
       )
       .to(
         overlayRef.current,
         {
           opacity: 0,
-          duration: 0.35,
+          duration: 0.28,
         },
-        0.62
+        0.48
       );
 
     return () => timeline.kill();
@@ -244,14 +236,12 @@ export default function Preloader({ onComplete }) {
 
   return (
     <div ref={overlayRef} className="site-preloader" role="status" aria-live="polite" aria-label={stage}>
-      <div className="preloader-shutter preloader-shutter-top" />
-      <div className="preloader-shutter preloader-shutter-bottom" />
-      <div className="preloader-noise" />
+      <div className="preloader-overlay-line" />
       <div className="preloader-grid" />
       <div className="preloader-glow preloader-glow-left" />
       <div className="preloader-glow preloader-glow-right" />
 
-      <div className="preloader-shell">
+      <div className="preloader-shell preloader-panel">
         <div className="preloader-topbar preloader-reveal">
           <span>{copy.eyebrow}</span>
           <span>2026</span>
@@ -266,24 +256,21 @@ export default function Preloader({ onComplete }) {
             </h1>
             <p className="preloader-description preloader-reveal">{copy.description}</p>
 
-            <div className="preloader-metrics preloader-reveal">
-              {copy.metrics.map((metric) => (
-                <div key={metric.value} className="preloader-metric-card">
-                  <span>{metric.value}</span>
-                  <small>{metric.label}</small>
-                </div>
+            <div className="preloader-markers preloader-reveal" aria-hidden="true">
+              {copy.markers.map((marker) => (
+                <span key={marker}>{marker}</span>
               ))}
             </div>
           </div>
 
-          <div className="preloader-orbit" aria-hidden="true">
-            <div className="preloader-ring preloader-ring-one" />
-            <div className="preloader-ring preloader-ring-two" />
-            <div className="preloader-ring preloader-ring-three" />
-            <div className="preloader-core">
-              <span>MC</span>
+          <div className="preloader-visual" aria-hidden="true">
+            <div className="preloader-visual-frame preloader-visual-frame-outer" />
+            <div className="preloader-visual-frame preloader-visual-frame-mid" />
+            <div className="preloader-visual-frame preloader-visual-frame-inner" />
+            <div className="preloader-visual-beam" />
+            <div className="preloader-visual-core">
+              <span>01</span>
             </div>
-            <div className="preloader-pulse" />
           </div>
         </div>
 
@@ -299,14 +286,6 @@ export default function Preloader({ onComplete }) {
             <span>{stage}</span>
             <span>{String(progress).padStart(3, '0')}%</span>
           </div>
-        </div>
-      </div>
-
-      <div className="preloader-rail">
-        <div className="preloader-rail-track">
-          {[...copy.rail, ...copy.rail].map((item, index) => (
-            <span key={`${item}-${index}`}>{item}</span>
-          ))}
         </div>
       </div>
     </div>
