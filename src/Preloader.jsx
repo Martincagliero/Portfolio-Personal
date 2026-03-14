@@ -5,29 +5,19 @@ import { useLanguage } from './LanguageContext.jsx';
 const PRELOADER_COPY = {
   en: {
     eyebrow: 'MARTIN CAGLIERO',
-    label: 'Curated portfolio',
-    titleTop: 'Less noise',
-    titleBottom: 'more signal',
-    description: 'A concise transition that sets tone, rhythm and precision before the work appears.',
     stages: {
-      boot: 'Aligning structure',
-      sync: 'Refining detail',
-      ready: 'Opening portfolio',
+      boot: 'loading',
+      sync: 'syncing',
+      ready: 'ready',
     },
-    markers: ['strategy', 'design', 'systems'],
   },
   es: {
     eyebrow: 'MARTIN CAGLIERO',
-    label: 'Portfolio curado',
-    titleTop: 'Menos ruido',
-    titleBottom: 'más señal',
-    description: 'Una transición breve que marca tono, ritmo y precisión antes de mostrar el trabajo.',
     stages: {
-      boot: 'Alineando estructura',
-      sync: 'Refinando detalle',
-      ready: 'Abriendo portfolio',
+      boot: 'cargando',
+      sync: 'sincronizando',
+      ready: 'listo',
     },
-    markers: ['estrategia', 'diseno', 'sistemas'],
   },
 };
 
@@ -109,7 +99,7 @@ export default function Preloader({ onComplete }) {
           0.12
         )
         .fromTo(
-          '.preloader-status-row',
+          '.preloader-meta',
           { y: 18, opacity: 0 },
           {
             y: 0,
@@ -244,22 +234,19 @@ export default function Preloader({ onComplete }) {
       <div className="preloader-shell preloader-panel">
         <div className="preloader-topbar preloader-reveal">
           <span>{copy.eyebrow}</span>
-          <span>2026</span>
+          <span>{String(progress).padStart(3, '0')}</span>
         </div>
 
         <div className="preloader-main">
-          <div className="preloader-copy">
-            <p className="preloader-label preloader-reveal">{copy.label}</p>
-            <h1 className="preloader-title preloader-reveal">
-              <span>{copy.titleTop}</span>
-              <span>{copy.titleBottom}</span>
-            </h1>
-            <p className="preloader-description preloader-reveal">{copy.description}</p>
+          <div className="preloader-copy preloader-reveal">
+            <div className="preloader-signature">
+              <span>portfolio</span>
+              <span className="preloader-signature-dot" />
+            </div>
 
-            <div className="preloader-markers preloader-reveal" aria-hidden="true">
-              {copy.markers.map((marker) => (
-                <span key={marker}>{marker}</span>
-              ))}
+            <div className="preloader-meta">
+              <span>{stage}</span>
+              <span>{String(progress).padStart(3, '0')}%</span>
             </div>
           </div>
 
@@ -267,9 +254,11 @@ export default function Preloader({ onComplete }) {
             <div className="preloader-visual-frame preloader-visual-frame-outer" />
             <div className="preloader-visual-frame preloader-visual-frame-mid" />
             <div className="preloader-visual-frame preloader-visual-frame-inner" />
+            <div className="preloader-visual-orbit preloader-visual-orbit-a" />
+            <div className="preloader-visual-orbit preloader-visual-orbit-b" />
             <div className="preloader-visual-beam" />
             <div className="preloader-visual-core">
-              <span>01</span>
+              <span>MC</span>
             </div>
           </div>
         </div>
@@ -280,11 +269,6 @@ export default function Preloader({ onComplete }) {
               className="preloader-progress-fill"
               style={{ transform: `scaleX(${Math.max(progress, 3) / 100})` }}
             />
-          </div>
-
-          <div className="preloader-status-row">
-            <span>{stage}</span>
-            <span>{String(progress).padStart(3, '0')}%</span>
           </div>
         </div>
       </div>
