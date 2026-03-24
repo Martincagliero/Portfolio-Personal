@@ -17,6 +17,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function AxusPage() {
   const { language, toggleLanguage } = useLanguage();
   const t = translations[language];
+  const axusDesk = t.axusDesk;
   const [scrolled, setScrolled] = React.useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
@@ -238,34 +239,47 @@ export default function AxusPage() {
                 <div className="absolute -inset-1 bg-gradient-to-r from-axus-blue/30 via-axus-accent/30 to-axus-blue/30 rounded-2xl sm:rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
                 {/* Card content */}
-                <div className="relative rounded-2xl sm:rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.02] backdrop-blur-xl p-5 sm:p-8 md:p-12 transition-all duration-500 group-hover:border-axus-accent/40">
-                  <div className="flex flex-col md:flex-row items-center md:items-start gap-6 sm:gap-8 md:gap-10">
+                <div className="relative rounded-2xl sm:rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.02] backdrop-blur-xl px-4 py-5 sm:p-8 md:p-12 transition-all duration-500 group-hover:border-axus-accent/40">
+                  <div className="flex flex-col md:flex-row items-start sm:items-center md:items-start gap-5 sm:gap-8 md:gap-10">
                     {/* Logo con efecto 3D */}
-                    <div className="flex-shrink-0 axus-desk-logo">
+                    <div className="flex-shrink-0 axus-desk-logo mx-auto md:mx-0">
                       <img 
                         src={AxusDeskLogo} 
-                        alt="Axus Desk Logo" 
-                        className="h-20 w-20 sm:h-24 sm:w-24 md:h-28 md:w-28 object-contain drop-shadow-xl" 
+                        alt="AxusDesk Logo" 
+                        className="h-16 w-16 sm:h-24 sm:w-24 md:h-28 md:w-28 object-contain drop-shadow-xl" 
                       />
                     </div>
                     
-                    <div className="flex-grow text-center md:text-left">
-                      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1 sm:mb-2 bg-gradient-to-r from-white to-axus-light bg-clip-text text-transparent">
-                        Axus Desk
+                    <div className="flex-grow text-left md:text-left max-w-3xl w-full">
+                      <h2 className="text-[1.85rem] leading-none sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-2 bg-gradient-to-r from-white to-axus-light bg-clip-text text-transparent">
+                        {axusDesk.title}
                       </h2>
-                      <p className="text-axus-accent font-semibold text-base sm:text-lg mb-3 sm:mb-4">
-                        CRM & Automation Platform
+                      <p className="text-axus-accent font-semibold text-sm sm:text-lg mb-3 sm:mb-4 max-w-xl">
+                        {axusDesk.subtitle}
                       </p>
-                      <p className="text-white/75 text-sm sm:text-base md:text-lg leading-relaxed mb-6 sm:mb-7 max-w-2xl mx-auto md:mx-0">
-                        Desarrollé esta plataforma integral de CRM para automatizar procesos, gestionar relaciones y potenciar la productividad. Un proyecto donde apliqué arquitectura escalable, diseño intuitivo y funcionalidades avanzadas.
-                      </p>
+                      <div className="space-y-3.5 sm:space-y-5 mb-5 sm:mb-7 text-white/75 text-sm sm:text-base md:text-lg leading-relaxed max-w-3xl mx-auto md:mx-0">
+                        <p>{axusDesk.intro}</p>
+                        <p>{axusDesk.evolution}</p>
+                        <ul className="grid gap-2 sm:gap-3 text-left text-white/85 text-[0.92rem] sm:text-base md:grid-cols-2">
+                          {axusDesk.features.map((feature) => (
+                            <li
+                              key={feature}
+                              className="flex items-start gap-2.5 rounded-xl border border-white/10 bg-white/[0.04] px-3 py-2.5 sm:px-3.5 sm:py-3"
+                            >
+                              <span className="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-axus-accent" />
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                        <p>{axusDesk.closing}</p>
+                      </div>
                       <a 
                         href="https://axus-desk.vercel.app/" 
                         target="_blank" 
                         rel="noopener noreferrer" 
-                        className="inline-flex items-center gap-2 px-5 sm:px-7 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl bg-gradient-to-r from-axus-accent to-axus-blue text-axus-dark hover:from-axus-blue hover:to-axus-accent font-bold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 text-sm sm:text-base"
+                        className="inline-flex w-full sm:w-auto justify-center items-center gap-2 px-5 sm:px-7 py-3 sm:py-3.5 rounded-lg sm:rounded-xl bg-gradient-to-r from-axus-accent to-axus-blue text-axus-dark hover:from-axus-blue hover:to-axus-accent font-bold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02] text-sm sm:text-base"
                       >
-                        <span>Abrir plataforma</span>
+                        <span>{axusDesk.cta}</span>
                         <span>→</span>
                       </a>
                     </div>

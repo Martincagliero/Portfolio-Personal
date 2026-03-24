@@ -195,6 +195,17 @@ html {
   filter: drop-shadow(0 15px 30px rgba(56, 189, 248, 0.4));
 }
 
+@media (max-width: 767px) {
+  .axus-desk-card:hover {
+    transform: none;
+  }
+
+  .axus-desk-card:hover .axus-desk-logo {
+    transform: none;
+    filter: drop-shadow(0 10px 24px rgba(56, 189, 248, 0.22));
+  }
+}
+
 .axus-highlight-card {
   cursor: pointer;
 }
